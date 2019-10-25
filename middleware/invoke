@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/usr/bin/invoke_app "$@" -C "start_jupyter -A -T @tool tr_microenvironment.ipynb" \
+    -t tr_microenv \
+    -u anaconda3-5.1
