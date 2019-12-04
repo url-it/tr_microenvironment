@@ -172,7 +172,7 @@ void create_cell_types( void )
 	// Alter the transition rate from G0G1 state to S state
 	CellA.phenotype.cycle.data.transition_rate(0,0) *= 0;
 		//parameters.doubles( "CellA_relative_cycle_entry_rate" ); // 0.1; 
-	std::cout<<"set up micro types";
+	//std::cout<<"set up micro types";
 	return; 
 }
 
@@ -215,7 +215,25 @@ void setup_microenvironment( void )
 	
 	// initialize BioFVM 
 	
-	initialize_microenvironment(); 	
+	initialize_microenvironment();
+	bool make_Dirichlet_node=parameters.bools("make_Dirichlet_node");
+	
+	
+if (make_Dirichlet_node==true)
+{
+	std::vector<double> bc_vector( 2 );
+	bc_vector[0]=parameters.doubles("Concentration_of_oxygen");//getvalue
+	bc_vector[1]=parameters.doubles("Concentration_of_Glucose");//getvalue
+	double x= parameters.doubles("Dirichlet_node_position_x");;//getx vale:
+	double y=  parameters.doubles("Dirichlet_node_position_y");;//get yvalue
+	std::vector<double> position(2);
+	position[0]= x;
+	position[1]= y;
+	int voxel= microenvironment.nearest_voxel_index( position);
+	microenvironment.add_dirichlet_node( voxel,bc_vector );
+//double x=
+	
+} 	
 	
 	return; 
 }

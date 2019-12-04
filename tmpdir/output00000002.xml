@@ -11,9 +11,9 @@
 		</software>
 		<citation />
 		<current_time units="min">720.000000</current_time>
-		<current_runtime units="sec">45.524839</current_runtime>
-		<created>2019-10-25T14:48:01Z</created>
-		<last_modified>2019-10-25T14:48:01Z</last_modified>
+		<current_runtime units="sec">52.089510</current_runtime>
+		<created>2019-12-04T15:51:29Z</created>
+		<last_modified>2019-12-04T15:51:29Z</last_modified>
 	</metadata>
 	<microenvironment>
 		<domain name="microenvironment">
@@ -27,7 +27,14 @@
 				</voxels>
 			</mesh>
 			<variables>
-				<variable name="substrate" units="mol" ID="0">
+				<variable name="oxygen" units="mmHg" ID="0">
+					<physical_parameter_set>
+						<conditions />
+						<diffusion_coefficient units="micron^2/min">100000.000000</diffusion_coefficient>
+						<decay_rate units="1/min">0.100000</decay_rate>
+					</physical_parameter_set>
+				</variable>
+				<variable name="Glucose" units="Mol" ID="1">
 					<physical_parameter_set>
 						<conditions />
 						<diffusion_coefficient units="micron^2/min">10.000000</diffusion_coefficient>

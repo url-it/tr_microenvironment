@@ -41,13 +41,21 @@
 	</save>
 	
 	<microenvironment_setup>
-		<variable ID="0" name="substrate" units="mol">
+		<variable ID="0" name="oxygen" units="mmHg">
+			<physical_parameter_set>
+				<diffusion_coefficient units="micron^2/min">100000.0</diffusion_coefficient>
+				<decay_rate units="1/min">0.1</decay_rate>  
+			</physical_parameter_set>
+			<initial_condition units="mmHg">38.0</initial_condition>
+			<Dirichlet_boundary_condition enabled="true" units="mmHg">38.0</Dirichlet_boundary_condition>
+		</variable>
+		<variable ID="1" name="Glucose" units="Mol">
 			<physical_parameter_set>
 				<diffusion_coefficient units="micron^2/min">10.0</diffusion_coefficient>
 				<decay_rate units="1/min">0.1</decay_rate>  
 			</physical_parameter_set>
-			<initial_condition units="mmHg">0.0</initial_condition>
-			<Dirichlet_boundary_condition enabled="true" units="mmHg">0.0</Dirichlet_boundary_condition>
+			<initial_condition units="Mol">10.0</initial_condition>
+			<Dirichlet_boundary_condition enabled="true" units="Mol">5.0</Dirichlet_boundary_condition>
 		</variable>
 		
 		<options>
@@ -67,6 +75,11 @@
 	<user_parameters>
 		
 		<random_seed type="int" units="dimensionless">0</random_seed> 
+		<make_Dirichlet_node type="bool">True</make_Dirichlet_node>
+		<Dirichlet_node_position_x type="double">0.0</Dirichlet_node_position_x>
+		<Dirichlet_node_position_y type="double">0.0</Dirichlet_node_position_y>
+		<Concentration_of_oxygen type="double">99.0</Concentration_of_oxygen>
+		<Concentration_of_Glucose type="double">0.0</Concentration_of_Glucose>
 	</user_parameters>
 	
 </PhysiCell_settings>
