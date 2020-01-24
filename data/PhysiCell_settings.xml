@@ -152,7 +152,7 @@
 		<make_Dirichlet_node type="bool">true</make_Dirichlet_node>
 		<Dirichlet_node_position_x type="double">0.0</Dirichlet_node_position_x>
 		<Dirichlet_node_position_y type="double">0.0</Dirichlet_node_position_y>
-		<Concentration_of_oxygen type="double">0.0</Concentration_of_oxygen>
+		<Concentration_of_oxygen type="double">10.0</Concentration_of_oxygen>
 		<Concentration_of_Glucose type="double">0.0</Concentration_of_Glucose>
 	</user_parameters>
 	
