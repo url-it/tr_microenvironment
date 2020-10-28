@@ -153,9 +153,9 @@ void create_cell_types( void )
 	int sub_index = microenvironment.find_density_index( "substrate" ); 
 	// enable random motility 
 	CellA.phenotype.motility.is_motile = false; 
-	CellA.phenotype.secretion.uptake_rates[sub_index] = 0; 
-	CellA.phenotype.secretion.secretion_rates[sub_index] = 1; 
-	CellA.phenotype.secretion.saturation_densities[sub_index] = 100; 
+	//CellA.phenotype.secretion.uptake_rates[sub_index] = 0; 
+	//CellA.phenotype.secretion.secretion_rates[sub_index] = 0; 
+	//CellA.phenotype.secretion.saturation_densities[sub_index] = 100; 
 	//CellA.phenotype.geometry.radius=100;
 	CellA.phenotype.volume.multiply_by_ratio(50);
 	//CellA.phenotype.motility.persistence_time = parameters.doubles( "CellA_persistence_time" ); // 15.0; 
@@ -223,9 +223,9 @@ if (make_Dirichlet_node==true)
 {
 	std::vector<double> bc_vector( 2 );
 	bc_vector[0]=parameters.doubles("Concentration_of_oxygen");//getvalue
-	bc_vector[1]=parameters.doubles("Concentration_of_Glucose");//getvalue
-	double x= parameters.doubles("Dirichlet_node_position_x");;//getx vale:
-	double y=  parameters.doubles("Dirichlet_node_position_y");;//get yvalue
+	bc_vector[1]=parameters.doubles("Concentration_of_Chemical_A");//getvalue
+	double x= parameters.doubles("Dirichlet_node_position_x");//getx vale:
+	double y=  parameters.doubles("Dirichlet_node_position_y");//get yvalue
 	std::vector<double> position(2);
 	position[0]= x;
 	position[1]= y;

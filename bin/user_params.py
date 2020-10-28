@@ -22,91 +22,79 @@ class UserTab(object):
 
         name_button_layout={'width':'25%'}
         widget_layout = {'width': '15%'}
+        widget2_layout = {'width': '10%'}
         units_button_layout ={'width':'15%'}
         desc_button_layout={'width':'45%'}
+        divider_button_layout={'width':'40%'}
 
-        param_name1 = Button(description='random_seed', disabled=True, layout=name_button_layout)
-        param_name1.style.button_color = 'lightgreen'
-
-        self.random_seed = IntText(
-          value=0,
-          step=1,
-          style=style, layout=widget_layout)
-
-        param_name2 = Button(description='make_Dirichlet_node', disabled=True, layout=name_button_layout)
-        param_name2.style.button_color = 'tan'
+        param_name1 = Button(description='make_Dirichlet_node', disabled=True, layout=name_button_layout)
+        param_name1.style.button_color = 'tan'
 
         self.make_Dirichlet_node = Checkbox(
-          value=True,
+          value=False,
           style=style, layout=widget_layout)
 
-        param_name3 = Button(description='Dirichlet_node_position_x', disabled=True, layout=name_button_layout)
-        param_name3.style.button_color = 'lightgreen'
+        param_name2 = Button(description='Dirichlet_node_position_x', disabled=True, layout=name_button_layout)
+        param_name2.style.button_color = 'lightgreen'
 
         self.Dirichlet_node_position_x = FloatText(
-          value=0.0,
-          step=0.01,
+          value=100.0,
+          step=10,
           style=style, layout=widget_layout)
 
-        param_name4 = Button(description='Dirichlet_node_position_y', disabled=True, layout=name_button_layout)
-        param_name4.style.button_color = 'tan'
+        param_name3 = Button(description='Dirichlet_node_position_y', disabled=True, layout=name_button_layout)
+        param_name3.style.button_color = 'tan'
 
         self.Dirichlet_node_position_y = FloatText(
-          value=0.0,
-          step=0.01,
+          value=100.0,
+          step=10,
           style=style, layout=widget_layout)
 
-        param_name5 = Button(description='Concentration_of_oxygen', disabled=True, layout=name_button_layout)
-        param_name5.style.button_color = 'lightgreen'
+        param_name4 = Button(description='Concentration_of_oxygen', disabled=True, layout=name_button_layout)
+        param_name4.style.button_color = 'lightgreen'
 
         self.Concentration_of_oxygen = FloatText(
           value=0.0,
           step=0.01,
           style=style, layout=widget_layout)
 
-        param_name6 = Button(description='Concentration_of_Glucose', disabled=True, layout=name_button_layout)
-        param_name6.style.button_color = 'tan'
+        param_name5 = Button(description='Concentration_of_Chemical_A', disabled=True, layout=name_button_layout)
+        param_name5.style.button_color = 'tan'
 
-        self.Concentration_of_Glucose = FloatText(
+        self.Concentration_of_Chemical_A = FloatText(
           value=0.0,
           step=0.01,
           style=style, layout=widget_layout)
 
         units_button1 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button1.style.button_color = 'lightgreen'
+        units_button1.style.button_color = 'tan'
         units_button2 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button2.style.button_color = 'tan'
+        units_button2.style.button_color = 'lightgreen'
         units_button3 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button3.style.button_color = 'lightgreen'
+        units_button3.style.button_color = 'tan'
         units_button4 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button4.style.button_color = 'tan'
+        units_button4.style.button_color = 'lightgreen'
         units_button5 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button5.style.button_color = 'lightgreen'
-        units_button6 = Button(description='', disabled=True, layout=units_button_layout) 
-        units_button6.style.button_color = 'tan'
+        units_button5.style.button_color = 'tan'
 
-        desc_button1 = Button(description='', disabled=True, layout=desc_button_layout) 
-        desc_button1.style.button_color = 'lightgreen'
-        desc_button2 = Button(description='', disabled=True, layout=desc_button_layout) 
+        desc_button2 = Button(description='' , tooltip='', disabled=True, layout=desc_button_layout) 
         desc_button2.style.button_color = 'tan'
-        desc_button3 = Button(description='', disabled=True, layout=desc_button_layout) 
+        desc_button3 = Button(description='value on x-axis for dirichlet node; make sure it is within domain size' , tooltip='value on x-axis for dirichlet node; make sure it is within domain size', disabled=True, layout=desc_button_layout) 
         desc_button3.style.button_color = 'lightgreen'
-        desc_button4 = Button(description='', disabled=True, layout=desc_button_layout) 
+        desc_button4 = Button(description='value on y-axis for dirichlet node; make sure it is within domain size' , tooltip='value on y-axis for dirichlet node; make sure it is within domain size', disabled=True, layout=desc_button_layout) 
         desc_button4.style.button_color = 'tan'
-        desc_button5 = Button(description='', disabled=True, layout=desc_button_layout) 
+        desc_button5 = Button(description='concentration of oxygen at this specific Dirichlet node' , tooltip='concentration of oxygen at this specific Dirichlet node', disabled=True, layout=desc_button_layout) 
         desc_button5.style.button_color = 'lightgreen'
-        desc_button6 = Button(description='', disabled=True, layout=desc_button_layout) 
+        desc_button6 = Button(description='concentration of Chemical_A at this specific Dirichlet node' , tooltip='concentration of Chemical_A at this specific Dirichlet node', disabled=True, layout=desc_button_layout) 
         desc_button6.style.button_color = 'tan'
 
-        row1 = [param_name1, self.random_seed, units_button1, desc_button1] 
-        row2 = [param_name2, self.make_Dirichlet_node, units_button2, desc_button2] 
-        row3 = [param_name3, self.Dirichlet_node_position_x, units_button3, desc_button3] 
-        row4 = [param_name4, self.Dirichlet_node_position_y, units_button4, desc_button4] 
-        row5 = [param_name5, self.Concentration_of_oxygen, units_button5, desc_button5] 
-        row6 = [param_name6, self.Concentration_of_Glucose, units_button6, desc_button6] 
+        row2 = [param_name1, self.make_Dirichlet_node, units_button1, desc_button2] 
+        row3 = [param_name2, self.Dirichlet_node_position_x, units_button2, desc_button3] 
+        row4 = [param_name3, self.Dirichlet_node_position_y, units_button3, desc_button4] 
+        row5 = [param_name4, self.Concentration_of_oxygen, units_button4, desc_button5] 
+        row6 = [param_name5, self.Concentration_of_Chemical_A, units_button5, desc_button6] 
 
         box_layout = Layout(display='flex', flex_flow='row', align_items='stretch', width='100%')
-        box1 = Box(children=row1, layout=box_layout)
         box2 = Box(children=row2, layout=box_layout)
         box3 = Box(children=row3, layout=box_layout)
         box4 = Box(children=row4, layout=box_layout)
@@ -114,7 +102,6 @@ class UserTab(object):
         box6 = Box(children=row6, layout=box_layout)
 
         self.tab = VBox([
-          box1,
           box2,
           box3,
           box4,
@@ -131,12 +118,11 @@ class UserTab(object):
                 vp.append(var)
 
         uep = xml_root.find('.//user_parameters')  # find unique entry point
-        self.random_seed.value = int(uep.find('.//random_seed').text)
         self.make_Dirichlet_node.value = ('true' == (uep.find('.//make_Dirichlet_node').text.lower()) )
         self.Dirichlet_node_position_x.value = float(uep.find('.//Dirichlet_node_position_x').text)
         self.Dirichlet_node_position_y.value = float(uep.find('.//Dirichlet_node_position_y').text)
         self.Concentration_of_oxygen.value = float(uep.find('.//Concentration_of_oxygen').text)
-        self.Concentration_of_Glucose.value = float(uep.find('.//Concentration_of_Glucose').text)
+        self.Concentration_of_Chemical_A.value = float(uep.find('.//Concentration_of_Chemical_A').text)
 
 
     # Read values from the GUI widgets to enable editing XML
@@ -148,9 +134,8 @@ class UserTab(object):
                 vp.append(var)
 
         uep = xml_root.find('.//user_parameters')  # find unique entry point
-        uep.find('.//random_seed').text = str(self.random_seed.value)
         uep.find('.//make_Dirichlet_node').text = str(self.make_Dirichlet_node.value)
         uep.find('.//Dirichlet_node_position_x').text = str(self.Dirichlet_node_position_x.value)
         uep.find('.//Dirichlet_node_position_y').text = str(self.Dirichlet_node_position_y.value)
         uep.find('.//Concentration_of_oxygen').text = str(self.Concentration_of_oxygen.value)
-        uep.find('.//Concentration_of_Glucose').text = str(self.Concentration_of_Glucose.value)
+        uep.find('.//Concentration_of_Chemical_A').text = str(self.Concentration_of_Chemical_A.value)

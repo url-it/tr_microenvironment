@@ -73,7 +73,6 @@
 #include <omp.h>
 #include <fstream>
 
-
 #include "./core/PhysiCell.h"
 #include "./modules/PhysiCell_standard_modules.h" 
 
@@ -116,9 +115,8 @@ int main( int argc, char* argv[] )
 	
 	create_cell_types();
 	
-	
 	setup_tissue();
-	
+
 	/* Users typically stop modifying here. END USERMODS */ 
 	
 	// set MultiCellDS save options 
