@@ -37,7 +37,7 @@ class MicroenvTab(object):
 
         param_name2 = Button(description='decay_rate', disabled=True, layout=name_button_layout)
 
-        self.oxygen_decay_rate = FloatText(value=0.0,
+        self.oxygen_decay_rate = FloatText(value=0.1,
           step=0.01,style=style, layout=widget_layout)
         param_name3 = Button(description='initial_condition', disabled=True, layout=name_button_layout)
 
@@ -70,12 +70,12 @@ class MicroenvTab(object):
 
         param_name5 = Button(description='diffusion_coefficient', disabled=True, layout=name_button_layout)
 
-        self.Chemical_A_diffusion_coefficient = FloatText(value=10.0,
-          step=1,style=style, layout=widget_layout)
+        self.Chemical_A_diffusion_coefficient = FloatText(value=100.0,
+          step=10,style=style, layout=widget_layout)
 
         param_name6 = Button(description='decay_rate', disabled=True, layout=name_button_layout)
 
-        self.Chemical_A_decay_rate = FloatText(value=0.0,
+        self.Chemical_A_decay_rate = FloatText(value=0.1,
           step=0.01,style=style, layout=widget_layout)
         param_name7 = Button(description='initial_condition', disabled=True, layout=name_button_layout)
 

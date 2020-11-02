@@ -119,7 +119,7 @@ void create_cell_types( void )
 	// first find index for a few key variables. 
 	int apoptosis_model_index = cell_defaults.phenotype.death.find_death_model_index( "Apoptosis" );
 	int necrosis_model_index = cell_defaults.phenotype.death.find_death_model_index( "Necrosis" );
-	//int oxygen_substrate_index = microenvironment.find_density_index( "oxygen" ); 
+	int oxygen_substrate_index = microenvironment.find_density_index( "oxygen" ); 
 
 	//int live_index = live_cycle_model.find_phase_index( PhysiCell_constants::live );
 	//int S_index = flow_cytometry_separated_cycle_model.find_phase_index( PhysiCell_constants::S_phase );
@@ -129,9 +129,9 @@ void create_cell_types( void )
 	cell_defaults.phenotype.death.rates[apoptosis_model_index ] = 0.0; 
 
 	// set oxygen uptake / secretion parameters for the default cell type 
-	//cell_defaults.phenotype.secretion.uptake_rates[oxygen_substrate_index] = 10; 
-	//cell_defaults.phenotype.secretion.secretion_rates[oxygen_substrate_index] = 0; 
-	//cell_defaults.phenotype.secretion.saturation_densities[oxygen_substrate_index] = 38; 
+	cell_defaults.phenotype.secretion.uptake_rates[oxygen_substrate_index] = 0; 
+	cell_defaults.phenotype.secretion.secretion_rates[oxygen_substrate_index] = 0; 
+	cell_defaults.phenotype.secretion.saturation_densities[oxygen_substrate_index] =0; 
 	
 	// add custom data here, if any 
 	
@@ -150,12 +150,12 @@ void create_cell_types( void )
 	
 	CellA.parameters.pReference_live_phenotype = &( CellA.phenotype ); 
 	//cell
-	int sub_index = microenvironment.find_density_index( "substrate" ); 
+	int sub_index = microenvironment.find_density_index( "Chemical_A" ); 
 	// enable random motility 
 	CellA.phenotype.motility.is_motile = false; 
-	//CellA.phenotype.secretion.uptake_rates[sub_index] = 0; 
-	//CellA.phenotype.secretion.secretion_rates[sub_index] = 0; 
-	//CellA.phenotype.secretion.saturation_densities[sub_index] = 100; 
+	CellA.phenotype.secretion.uptake_rates[sub_index] = 0; 
+	CellA.phenotype.secretion.secretion_rates[sub_index] = 0; 
+	CellA.phenotype.secretion.saturation_densities[sub_index] = 0; 
 	//CellA.phenotype.geometry.radius=100;
 	CellA.phenotype.volume.multiply_by_ratio(50);
 	//CellA.phenotype.motility.persistence_time = parameters.doubles( "CellA_persistence_time" ); // 15.0; 
