@@ -1361,8 +1361,7 @@ void initialize_microenvironment( void )
 		// add the Dirichlet nodes in the right places 
 		
 	}
-	std::cout << "which boundaries?" << std::endl; 
-	std::cout << xmin << " " << xmax << " " << ymin << " " << ymax << " " << zmin << " " << zmax << std::endl; 
+
 
 	// add the Dirichlet nodes in the right places 
 	// now, go in and set the values 
