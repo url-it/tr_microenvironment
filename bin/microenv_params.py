@@ -65,7 +65,7 @@ class MicroenvTab(object):
 
         self.oxygen_Dirichlet_boundary_condition_value_zmax = FloatText(value=100.0,style=style, layout=widget2_layout)
 
-        menv_var2 = Button(description='Chemical_A (Mol)', disabled=True, layout=name_button_layout)
+        menv_var2 = Button(description='Chemical_A (none)', disabled=True, layout=name_button_layout)
         menv_var2.style.button_color = 'lightgreen'
 
         param_name5 = Button(description='diffusion_coefficient', disabled=True, layout=name_button_layout)
@@ -79,29 +79,29 @@ class MicroenvTab(object):
           step=0.01,style=style, layout=widget_layout)
         param_name7 = Button(description='initial_condition', disabled=True, layout=name_button_layout)
 
-        self.Chemical_A_initial_condition = FloatText(value=10.0,style=style, layout=widget_layout)
+        self.Chemical_A_initial_condition = FloatText(value=1.0,style=style, layout=widget_layout)
         param_name8 = Button(description='Dirichlet_boundary_condition', disabled=True, layout=name_button_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition = FloatText(value=5.0,style=style, layout=widget_layout)
+        self.Chemical_A_Dirichlet_boundary_condition = FloatText(value=0.5,style=style, layout=widget_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle = Checkbox(description='on/off', disabled=False,style=style, layout=widget_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_xmin = Checkbox(description='xmin', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_xmin = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_xmin = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_xmax = Checkbox(description='xmax', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_xmax = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_xmax = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_ymin = Checkbox(description='ymin', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_ymin = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_ymin = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_ymax = Checkbox(description='ymax', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_ymax = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_ymax = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_zmin = Checkbox(description='zmin', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_zmin = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_zmin = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.Chemical_A_Dirichlet_boundary_condition_toggle_zmax = Checkbox(description='zmax', disabled=False,style=style, layout=widget_layout)
 
-        self.Chemical_A_Dirichlet_boundary_condition_value_zmax = FloatText(value=10.0,style=style, layout=widget2_layout)
+        self.Chemical_A_Dirichlet_boundary_condition_value_zmax = FloatText(value=1.0,style=style, layout=widget2_layout)
         self.calculate_gradient = Checkbox(description='calculate_gradients', disabled=False, layout=desc_button_layout)
         self.track_internal = Checkbox(description='track_in_agents', disabled=False, layout=desc_button_layout)
 

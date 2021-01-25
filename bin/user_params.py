@@ -76,8 +76,8 @@ class UserTab(object):
         param_name7.style.button_color = 'tan'
 
         self.Concentration_of_Chemical_A = FloatText(
-          value=100.0,
-          step=10,
+          value=1.0,
+          step=0.1,
           style=style, layout=widget_layout)
 
         units_button1 = Button(description='', disabled=True, layout=units_button_layout) 

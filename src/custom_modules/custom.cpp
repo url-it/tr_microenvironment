@@ -279,14 +279,6 @@ std::vector<std::string> my_coloring_function( Cell* pCell )
 	// start with flow cytometry coloring 
 	
 	std::vector<std::string> output = false_cell_coloring_cytometry(pCell); 
-		
-	if( pCell->phenotype.death.dead == false && pCell->type == 1 )
-	{
-		 output[0] = "none"; 
-		 output[1] = "none"; 
-		 output[2] = "none"; 
-		 output[3] = "none"; 
-	}
 	
 	return output; 
 }
