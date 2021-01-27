@@ -16,8 +16,29 @@ that will terminate (not pause) the simulation.
 <h2><strong>Introduction</strong></h2>
 
 <p>
-This app demonstrates ... 
+Multicellular simulations need to model chemical environment of cells to study the effect of chemical substrates on different cell behaviors. Moreover, cells secrete and absorb substrates from their environment thus affecting chemical gradients in the environment. 
 </p>
+<p>
+PhysiCell uses BioFVM to simulate the chemical environment of cells. BioFVM is software that allows substrate diffusion models to be run on modern desktop computers.Each application in Physicell has an object microenvironment which models the diffusion and boundary condition for chemical substrates. 
+</p>
+
+<p>
+In this app we have demonstrated the microenvironment with the help of two substrates. Users are encouraged to change different parameters to observe chemicals gradients in domain. 
+</p>
+
+<p>
+Two substrates oxygen and chemical A are introduced in the environment. You can modify the diffusion rate and decay rate of each substrate to obtain different diffusion lengths, we recommend using dramatically different length scales for both substrates to observe difference clearly. 
+</p>
+
+<p>
+Next you can change the boundary conditions in the app. Boundary conditions for both substrate work independently.  By default, there is von Neumann boundary conditions. You can also have Dirichlet boundary conditions. You may  use Dirichlet boundary conditions on all four boundaries or you can fine tune them by using only few of them. You can also change concentration of chemical substrate on each Dirichlet boundary.
+</p>
+
+
+<p>
+In the user parameters tab there is option to create a Dirichlet nodes anywhere in the domain. You can use it to set Dirichlet node for one or both chemical substrates. 
+</p>
+
 
 
 <p>This model and cloud-hosted demo are part of a course on computational multicellular systems biology created and taught by 
