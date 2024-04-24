@@ -39,7 +39,7 @@ BioFVM_OBJECTS := BioFVM_vector.o BioFVM_mesh.o BioFVM_microenvironment.o BioFVM
 BioFVM_utilities.o BioFVM_basic_agent.o BioFVM_MultiCellDS.o BioFVM_agent_container.o 
 
 PhysiCell_core_OBJECTS := PhysiCell_phenotype.o PhysiCell_cell_container.o PhysiCell_standard_models.o \
-PhysiCell_cell.o PhysiCell_custom.o PhysiCell_utilities.o PhysiCell_constants.o 
+PhysiCell_cell.o PhysiCell_custom.o PhysiCell_utilities.o 
 
 PhysiCell_module_OBJECTS := PhysiCell_SVG.o PhysiCell_pathology.o PhysiCell_MultiCellDS.o PhysiCell_various_outputs.o \
 PhysiCell_pugixml.o PhysiCell_settings.o
@@ -80,9 +80,6 @@ PhysiCell_utilities.o: ./core/PhysiCell_utilities.cpp
 	
 PhysiCell_custom.o: ./core/PhysiCell_custom.cpp
 	$(COMPILE_COMMAND) -c ./core/PhysiCell_custom.cpp 
-	
-PhysiCell_constants.o: ./core/PhysiCell_constants.cpp
-	$(COMPILE_COMMAND) -c ./core/PhysiCell_constants.cpp 
 	
 # BioFVM core components (needed by PhysiCell)
 	
@@ -159,28 +156,23 @@ install:
 
 distclean: clean
 	rm -f ../bin/$(PROGRAM_NAME)
-	rm -f ../bin/$(PROGRAM_NAME).exe
-	rm -rf ../.ipynb_checkpoints
-	rm -rf ../bin/__pycache__
+    rm -f ../bin/$(PROGRAM_NAME).exe
+    rm -rf ../bin/__pycache__
+    rm -rf ../.ipynb_checkpoints
 
 clean:
 	rm -f *.o
-	rm -f modules/*.o
 	rm -f $(PROGRAM_NAME)
-	rm -f $(PROGRAM_NAME).exe
+    rm -f $(PROGRAM_NAME).exe
 	
 data-cleanup:
 	rm -f *.mat
 	rm -f *.xml
 	rm -f *.svg
-	rm -rf ./output
-	mkdir ./output
+	rm -f ./output/*
 	touch ./output/empty.txt
 	
 # archival 
-	
-checkpoint: 
-	zip -r $$(date +%b_%d_%Y_%H%M).zip Makefile *.cpp *.h config/*.xml custom_modules/* 
 	
 zip:
 	zip -r latest.zip Makefile* *.cpp *.h BioFVM/* config/* core/* custom_modules/* matlab/* modules/* sample_projects/* 
@@ -201,3 +193,10 @@ unzip:
 untar: 
 	cp ./archives/latest.tar .
 	tar -xzf latest.tar
+
+animation:
+	cd output;magick mogrify -format jpg snapshot*.svg;magick snapshot*.jpg animation.gif
+    
+make notepad_edit:
+	notepad++ main.cpp ./config/PhysiCell_settings.xml ./custom_modules/custom.h ./custom_modules/custom.cpp
+    
