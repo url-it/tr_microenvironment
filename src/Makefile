@@ -32,6 +32,8 @@ ARCH := native # best auto-tuning
 # CFLAGS := -march=$(ARCH) -Ofast -s -fomit-frame-pointer -mfpmath=both -fopenmp -m64 -std=c++11
 # remove the -march arg to avoid SIGILL error on nanoHUB
 CFLAGS := -O3 -fomit-frame-pointer -mfpmath=both -fopenmp -m64 -std=c++11
+CFLAGS := -O3 -fomit-frame-pointer -fopenmp -std=c++11 -march=native -I/opt/homebrew/opt/libomp/include
+LDFLAGS := -L/opt/homebrew/opt/libomp/lib -lomp -fopenmp
 
 COMPILE_COMMAND := $(CC) $(CFLAGS) 
 
