@@ -1168,6 +1168,8 @@ class SubstrateTab(object):
         # x = np.linspace(0, 500)
         # oxy_ax.plot(x, 300*np.sin(x))
 
+        plt.show()
+
     #---------------------------------------------------------------------------
     # def plot_plots(self, frame):
     #     # if (self.first_time):
