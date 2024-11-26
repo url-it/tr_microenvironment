@@ -23,7 +23,8 @@ import platform
 import subprocess
 from debug import debug_view
 
-hublib_flag = True
+# hublib_flag = True
+hublib_flag = False
 if platform.system() != 'Windows':
     try:
 #        print("Trying to import hublib.ui")
@@ -222,6 +223,14 @@ def fill_gui_params(config_file):
     if xml_root.find('.//cell_definitions'):
         cell_types_tab.fill_gui(xml_root)
 
+def run_done_func_colab(s, rdir):
+    global run_button
+    with debug_view:
+        print('run_done_func: results in', rdir)
+    
+    sub.update(rdir)
+    run_button.description = "Run"
+    run_button.button_style='success'
 
 def run_done_func(s, rdir):
     # with debug_view:
@@ -361,8 +370,10 @@ def run_button_cb(s):
     # sub.update_params(config_tab)
     sub.update(tdir)
 
-    subprocess.Popen(["../bin/myproj", "config.xml"])
-
+    run_button.description = "WAIT..."
+    subprocess.run(["../bin/myproj", "config.xml"])
+    sub.max_frames.value = int(config_tab.tmax.value / config_tab.svg_interval.value)    # 42
+    run_button.description = "Run"
 
 #-------------------------------------------------
 if nanoHUB_flag:
@@ -375,7 +386,7 @@ if nanoHUB_flag:
 else:
     if (hublib_flag):
         run_button = RunCommand(start_func=run_sim_func,
-                            done_func=run_done_func,
+                            done_func=run_done_func_colab,
                             cachename='tr_microenvironment_nanohub',
                             showcache=False,
                             outcb=outcb)  
@@ -413,7 +424,7 @@ else:
 
 homedir = os.getcwd()
 
-tool_title = widgets.Label(r'\(\textbf{tr_microenvironment_nanohub}\)')
+tool_title = widgets.Label('Microenvironment_Training_App')
 if nanoHUB_flag or hublib_flag:
     # define this, but don't use (yet)
     remote_cb = widgets.Checkbox(indent=False, value=False, description='Submit as Batch Job to Clusters/Grid')
@@ -422,6 +433,10 @@ if nanoHUB_flag or hublib_flag:
     gui = widgets.VBox(children=[top_row, tabs, run_button.w])
     fill_gui_params(read_config.options['DEFAULT'])
 else:
+    cpp_output = widgets.Output()
+    acc = widgets.Accordion(children=[cpp_output])
+    acc.set_title(0, 'Output')
+
     top_row = widgets.HBox(children=[tool_title])
     gui = widgets.VBox(children=[top_row, tabs, run_button])
     fill_gui_params("data/PhysiCell_settings.xml")
