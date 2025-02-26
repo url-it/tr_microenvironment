@@ -63,7 +63,12 @@ nanoHUB_flag = False
 if( 'HOME' in os.environ.keys() ):
     nanoHUB_flag = "home/nanohub" in os.environ['HOME']
 
+# Output widget to display run output 
 output_widget = widgets.Output()
+acc = widgets.Accordion(children=[output_widget]) #<- should in create a tab
+acc.set_title(0, 'Output')
+
+
 # callback when user selects a cached run in the 'Load Config' dropdown widget.
 # HOWEVER, beware if/when this is called after a sim finishes and the Load Config dropdown widget reverts to 'DEFAULT'.
 # In that case, we don't want to recompute substrate.py self.numx, self.numy because we're still displaying plots from previous sim.
