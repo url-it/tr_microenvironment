@@ -346,6 +346,13 @@ def outcb(s):
 
 # # Callback for the ("dumb") 'Run' button (without hublib.ui)
 def run_button_cb(s):
+    """
+    Adding some doc just in case I forget 
+
+    The idea here is that we want to record the simulation output
+    in some separate window, kind of like a terminal window to do
+    so we use the output widget, and make as a "button/tab/dropdown" GUI
+    """
     with output_widget:
         output_widget.clear_output()  # Clear previous output
         print("Running myproj ...")
