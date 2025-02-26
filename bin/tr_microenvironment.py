@@ -444,7 +444,7 @@ if False:
     fill_gui_params(read_config.options['DEFAULT'])
 else:
     top_row = widgets.HBox(children=[tool_title])
-    gui = widgets.VBox(children=[top_row, tabs, run_button, output_widget])
+    gui = widgets.VBox(children=[top_row, tabs, run_button, acc])
     fill_gui_params("data/PhysiCell_settings.xml")
 
 # pass in (relative) directory where output data is located
