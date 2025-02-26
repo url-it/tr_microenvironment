@@ -340,45 +340,34 @@ def outcb(s):
 
 
 # # Callback for the ("dumb") 'Run' button (without hublib.ui)
-# def run_button_cb(s):
-# #    with debug_view:
-# #        print('run_button_cb')
-
-# #    new_config_file = full_xml_filename
-#     # print("new_config_file = ", new_config_file)
-# #    write_config_file(new_config_file)
-
-#     # make sure we are where we started
-#     os.chdir(homedir)
-
-#     # remove any previous data
-#     # NOTE: this dir name needs to match the <folder>  in /data/<config_file.xml>
-#     os.system('rm -rf tmpdir*')
-#     if os.path.isdir('tmpdir'):
-#         # something on NFS causing issues...
-#         tname = tempfile.mkdtemp(suffix='.bak', prefix='tmpdir_', dir='.')
-#         shutil.move('tmpdir', tname)
-#     os.makedirs('tmpdir')
-
-#     # write the default config file to tmpdir
-#     new_config_file = "tmpdir/config.xml"  # use Path; work on Windows?
-#     write_config_file(new_config_file)  
-
-#     tdir = os.path.abspath('tmpdir')
-#     os.chdir(tdir)  # operate from tmpdir; temporary output goes here.  may be copied to cache later
-#     # svg.update(tdir)
-#     # sub.update_params(config_tab)
-#     sub.update(tdir)
-
-#     run_button.description = "WAIT..."
-#     subprocess.run(["../bin/myproj", "config.xml"])
-#     sub.max_frames.value = int(config_tab.tmax.value / config_tab.svg_interval.value)    # 42
-#     run_button.description = "Run"
-
 def run_button_cb(s):
     with output_widget:
         output_widget.clear_output()  # Clear previous output
         print("Running myproj ...")
+
+        # make sure we are where we started
+        os.chdir(homedir)
+
+        # remove any previous data
+        # NOTE: this dir name needs to match the <folder> in /data/<config_file.xml>
+        os.system('rm -rf tmpdir*')
+        if os.path.isdir('tmpdir'):
+            # something on NFS causing issues...
+            tname = tempfile.mkdtemp(suffix='.bak', prefix='tmpdir_', dir='.')
+            shutil.move('tmpdir', tname)
+        os.makedirs('tmpdir')
+
+        # write the default config file to tmpdir
+        new_config_file = "tmpdir/config.xml"  # use Path; work on Windows?
+        write_config_file(new_config_file)
+
+        tdir = os.path.abspath('tmpdir')
+        os.chdir(tdir)  # operate from tmpdir; temporary output goes here. may be copied to cache later
+        # svg.update(tdir)
+        # sub.update_params(config_tab)
+        sub.update(tdir)
+
+        run_button.description = "WAIT..."
         process = subprocess.Popen(["../bin/myproj", "config.xml"],
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE,
@@ -388,7 +377,8 @@ def run_button_cb(s):
         for line in process.stderr:
             print(line, end="")
         process.wait()
-        print("Run completed.")
+        sub.max_frames.value = int(config_tab.tmax.value / config_tab.svg_interval.value)  # 42
+        run_button.description = "Run"
 
 #-------------------------------------------------
 if nanoHUB_flag:
