@@ -162,52 +162,52 @@ def write_config_file(name):
 
 # Fill the "Load Config" dropdown widget with valid cached results (and 
 # default & previous config options)
-def get_config_files():
-    cf = {'DEFAULT': full_xml_filename}
-    path_to_share = os.path.join('~', '.local','share','tr_microenvironment_nanohub')
-    dirname = os.path.expanduser(path_to_share)
-    try:
-        os.makedirs(dirname)
-    except:
-        pass
-    files = glob.glob("%s/*.xml" % dirname)
-    # dict.update() will append any new (key,value) pairs
-    cf.update(dict(zip(list(map(os.path.basename, files)), files)))
+# def get_config_files():
+#     cf = {'DEFAULT': full_xml_filename}
+#     path_to_share = os.path.join('~', '.local','share','tr_microenvironment_nanohub')
+#     dirname = os.path.expanduser(path_to_share)
+#     try:
+#         os.makedirs(dirname)
+#     except:
+#         pass
+#     files = glob.glob("%s/*.xml" % dirname)
+#     # dict.update() will append any new (key,value) pairs
+#     cf.update(dict(zip(list(map(os.path.basename, files)), files)))
 
-    # Find the dir path (full_path) to the cached dirs
-    if nanoHUB_flag:
-        full_path = os.path.expanduser("~/data/results/.submit_cache/tr_microenvironment_nanohub")  # does Windows like this?
-    else:
-        # local cache
-        try:
-            cachedir = os.environ['CACHEDIR']
-            full_path = os.path.join(cachedir, "tr_microenvironment_nanohub")
-        except:
-            # print("Exception in get_config_files")
-            return cf
+#     # Find the dir path (full_path) to the cached dirs
+#     if nanoHUB_flag:
+#         full_path = os.path.expanduser("~/data/results/.submit_cache/tr_microenvironment_nanohub")  # does Windows like this?
+#     else:
+#         # local cache
+#         try:
+#             cachedir = os.environ['CACHEDIR']
+#             full_path = os.path.join(cachedir, "tr_microenvironment_nanohub")
+#         except:
+#             # print("Exception in get_config_files")
+#             return cf
 
-    # Put all those cached (full) dirs into a list
-    dirs_all = [os.path.join(full_path, f) for f in os.listdir(full_path) if f != '.cache_table']
+#     # Put all those cached (full) dirs into a list
+#     dirs_all = [os.path.join(full_path, f) for f in os.listdir(full_path) if f != '.cache_table']
 
-    # Only want those dirs that contain output files (.svg, .mat, etc), i.e., handle the
-    # situation where a user cancels a Run before it really begins, which may create a (mostly) empty cached dir.
-    dirs = [f for f in dirs_all if len(os.listdir(f)) > 5]   # "5" somewhat arbitrary
-    # with debug_view:
-    #     print(dirs)
+#     # Only want those dirs that contain output files (.svg, .mat, etc), i.e., handle the
+#     # situation where a user cancels a Run before it really begins, which may create a (mostly) empty cached dir.
+#     dirs = [f for f in dirs_all if len(os.listdir(f)) > 5]   # "5" somewhat arbitrary
+#     # with debug_view:
+#     #     print(dirs)
 
-    # Get a list of sorted dirs, according to creation timestamp (newest -> oldest)
-    sorted_dirs = sorted(dirs, key=os.path.getctime, reverse=True)
-    # with debug_view:
-    #     print(sorted_dirs)
+#     # Get a list of sorted dirs, according to creation timestamp (newest -> oldest)
+#     sorted_dirs = sorted(dirs, key=os.path.getctime, reverse=True)
+#     # with debug_view:
+#     #     print(sorted_dirs)
 
-    # Get a list of timestamps associated with each dir
-    sorted_dirs_dates = [str(datetime.datetime.fromtimestamp(os.path.getctime(x))) for x in sorted_dirs]
-    # Create a dict of {timestamp:dir} pairs
-    cached_file_dict = dict(zip(sorted_dirs_dates, sorted_dirs))
-    cf.update(cached_file_dict)
-    # with debug_view:
-    #     print(cf)
-    return cf
+#     # Get a list of timestamps associated with each dir
+#     sorted_dirs_dates = [str(datetime.datetime.fromtimestamp(os.path.getctime(x))) for x in sorted_dirs]
+#     # Create a dict of {timestamp:dir} pairs
+#     cached_file_dict = dict(zip(sorted_dirs_dates, sorted_dirs))
+#     cf.update(cached_file_dict)
+#     # with debug_view:
+#     #     print(cf)
+#     return cf
 
 
 # Using params in a config (.xml) file, fill GUI widget values in each of the "input" tabs
@@ -259,7 +259,7 @@ def run_done_func(s, rdir):
     # svg.update(rdir)
     sub.update(rdir)
 
-    animate_tab.gen_button.disabled = False
+    # animate_tab.gen_button.disabled = False
 
     # with debug_view:
     #     print('RDF DONE')
@@ -270,7 +270,7 @@ def run_sim_func(s):
     # with debug_view:
     #     print('run_sim_func')
 
-    animate_tab.gen_button.disabled = True
+    # animate_tab.gen_button.disabled = True
 
     # If cells or substrates toggled off in Config tab, toggle off in Plots tab
     if config_tab.toggle_svg.value == False:
@@ -384,7 +384,7 @@ if nanoHUB_flag:
                         showcache=False,
                         outcb=outcb)
 else:
-    if (hublib_flag):
+    if False:
         run_button = RunCommand(start_func=run_sim_func,
                             done_func=run_done_func_colab,
                             cachename='tr_microenvironment_nanohub',
@@ -399,33 +399,33 @@ else:
         run_button.on_click(run_button_cb)
 
 
-if nanoHUB_flag or hublib_flag:
-    read_config = widgets.Dropdown(
-        description='Load Config',
-        options=get_config_files(),
-        tooltip='Config File or Previous Run',
-    )
-    read_config.style = {'description_width': '%sch' % str(len(read_config.description) + 1)}
-    read_config.observe(read_config_cb, names='value') 
+# if nanoHUB_flag or hublib_flag:
+#     read_config = widgets.Dropdown(
+#         description='Load Config',
+#         options=get_config_files(),
+#         tooltip='Config File or Previous Run',
+#     )
+#     read_config.style = {'description_width': '%sch' % str(len(read_config.description) + 1)}
+#     read_config.observe(read_config_cb, names='value') 
 
 tab_height = 'auto'
 tab_layout = widgets.Layout(width='auto',height=tab_height, overflow_y='scroll',)   # border='2px solid black',
 
 if xml_root.find('.//cell_definitions'):
     titles = ['About', 'Config Basics', 'Microenvironment', 'User Params', 'Cell Types', 'Out: Plots', 'Animate']
-    tabs = widgets.Tab(children=[about_tab.tab, config_tab.tab, microenv_tab.tab, user_tab.tab, cell_types_tab.tab, sub.tab, animate_tab.tab],
+    tabs = widgets.Tab(children=[about_tab.tab, config_tab.tab, microenv_tab.tab, user_tab.tab, cell_types_tab.tab, sub.tab],
                    _titles={i: t for i, t in enumerate(titles)},
                    layout=tab_layout)
 else:
     titles = ['About', 'Config Basics', 'Microenvironment', 'User Params', 'Out: Plots', 'Animate']
-    tabs = widgets.Tab(children=[about_tab.tab, config_tab.tab, microenv_tab.tab, user_tab.tab, sub.tab, animate_tab.tab],
+    tabs = widgets.Tab(children=[about_tab.tab, config_tab.tab, microenv_tab.tab, user_tab.tab, sub.tab],
                    _titles={i: t for i, t in enumerate(titles)},
                    layout=tab_layout)
 
 homedir = os.getcwd()
 
 tool_title = widgets.Label('Microenvironment_Training_App')
-if nanoHUB_flag or hublib_flag:
+if False:
     # define this, but don't use (yet)
     remote_cb = widgets.Checkbox(indent=False, value=False, description='Submit as Batch Job to Clusters/Grid')
 
@@ -433,9 +433,9 @@ if nanoHUB_flag or hublib_flag:
     gui = widgets.VBox(children=[top_row, tabs, run_button.w])
     fill_gui_params(read_config.options['DEFAULT'])
 else:
-    cpp_output = widgets.Output()
-    acc = widgets.Accordion(children=[cpp_output])
-    acc.set_title(0, 'Output')
+    # cpp_output = widgets.Output()
+    # acc = widgets.Accordion(children=[cpp_output])
+    # acc.set_title(0, 'Output')
 
     top_row = widgets.HBox(children=[tool_title])
     gui = widgets.VBox(children=[top_row, tabs, run_button])
