@@ -43,6 +43,7 @@ warnings.filterwarnings("ignore")
 class SubstrateTab(object):
 
     def __init__(self):
+        self.png_frame=0;
         
         self.output_dir = '.'
         # self.output_dir = 'tmpdir'
