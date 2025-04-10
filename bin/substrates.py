@@ -1223,6 +1223,9 @@ class SubstrateTab(object):
         # oxy_ax = self.fig.add_subplot(grid[3:4, 0:1])  # nrows, ncols
         # x = np.linspace(0, 500)
         # oxy_ax.plot(x, 300*np.sin(x))
+       # self.png_frame += 1 
+        #png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png") 
+        self.fig.savefig( full_fname)
 
         plt.show()   # rwh: for Colab
 
