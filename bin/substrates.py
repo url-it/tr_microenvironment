@@ -112,7 +112,7 @@ class SubstrateTab(object):
         max_frames = 1   
         # self.mcds_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
         # self.i_plot = interactive(self.plot_plots, frame=(0, max_frames), continuous_update=False)  
-        self.i_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
+        self.i_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=True)  
 
         # "plot_size" controls the size of the tab height, not the plot (rf. figsize for that)
         # NOTE: the Substrates Plot tab has an extra row of widgets at the top of it (cf. Cell Plots tab)
@@ -1225,9 +1225,12 @@ class SubstrateTab(object):
         # oxy_ax = self.fig.add_subplot(grid[3:4, 0:1])  # nrows, ncols
         # x = np.linspace(0, 500)
         # oxy_ax.plot(x, 300*np.sin(x))
+        self.png_frame += 1 
+        png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
+        self.fig.savefig(png_file)
 
         plt.show()   # rwh: for Colab
-        return(plt.figure.Figure)
+   
 
     def save_png(self):
         png_frame=1
