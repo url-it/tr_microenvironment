@@ -1200,9 +1200,7 @@ class SubstrateTab(object):
             self.svg_frame = frame
             # print('plot_svg with frame=',self.svg_frame)
             self.plot_svg(self.svg_frame)
-        self.png_frame += 1 
-        png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png") 
-        self.fig.savefig(png_file)
+
         fname = "output%08d_microenvironment0.mat" % self.substrate_frame
         full_fname = os.path.join(self.output_dir, fname)
         if os.path.isfile(full_fname):            
@@ -1229,7 +1227,14 @@ class SubstrateTab(object):
 
         plt.show()   # rwh: for Colab
 
-
+    def save_png(self):
+        for frame in range0, (max_frames):
+            self.plot_substrate(frame)  # Assuming this draws the plot using matplotlib
+            plt.savefig(f"frame_{frame:04d}.png", dpi=300)  # Padded with zeros: frame_0001.png, etc.
+            plt.close() 
+       
+    
+   
 
     #---------------------------------------------------------------------------
     # def plot_plots(self, frame):
