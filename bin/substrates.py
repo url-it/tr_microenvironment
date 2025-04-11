@@ -1227,15 +1227,15 @@ class SubstrateTab(object):
         # oxy_ax.plot(x, 300*np.sin(x))
 
         plt.show()   # rwh: for Colab
-        return()
+        return(plt.figure.Figure)
 
     def save_png(self):
         png_frame=1
         for frame in range0, (max_frames):
-            self.plot_substrate(frame)  # Assuming this draws the plot using matplotlib
+            fig1=self.plot_substrate(frame)  # Assuming this draws the plot using matplotlib
             png_frame += 1 
             png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png") 
-            plt.fig.savefig(png_file)  # Padded with zeros: frame_0001.png, etc.
+            fig1.savefig(png_file)  # Padded with zeros: frame_0001.png, etc.
             #plt.close() 
        
     
