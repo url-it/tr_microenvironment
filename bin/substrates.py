@@ -1006,7 +1006,7 @@ class SubstrateTab(object):
     #---------------------------------------------------------------------------
     # assume "frame" is cell frame #, unless Cells is togggled off, then it's the substrate frame #
     # def plot_substrate(self, frame, grid):
-    def plot_substrate(self, frame):
+    def plot_substrate(self, frame, force_plot=False):
         # global current_idx, axes_max, gFileId, field_index
 
         # print("plot_substrate(): frame*self.substrate_delta_t  = ",frame*self.substrate_delta_t)
@@ -1026,7 +1026,7 @@ class SubstrateTab(object):
 
         # if (self.substrates_toggle.value and frame*self.substrate_delta_t <= self.svg_frame*self.svg_delta_t):
         # if (self.substrates_toggle.value and (frame % self.modulo == 0)):
-        if (self.substrates_toggle.value):
+        if (self.substrates_toggle.value or force_plot):
             # self.fig = plt.figure(figsize=(14, 15.6))
             # self.fig = plt.figure(figsize=(15.0, 12.5))
             self.fig = plt.figure(figsize=(self.figsize_width_substrate, self.figsize_height_substrate))
@@ -1225,23 +1225,22 @@ class SubstrateTab(object):
         # oxy_ax = self.fig.add_subplot(grid[3:4, 0:1])  # nrows, ncols
         # x = np.linspace(0, 500)
         # oxy_ax.plot(x, 300*np.sin(x))
-        self.png_frame += 1 
-        png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
-        self.fig.savefig(png_file)
+        #self.png_frame += 1 
+        
+        #png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
+        #self.fig.savefig(png_file)
 
         plt.show()   # rwh: for Colab
    
 
     def save_png(self):
-        png_frame=1
-        for frame in range0, (max_frames):
-            fig1=self.plot_substrate(frame)  # Assuming this draws the plot using matplotlib
-            png_frame += 1 
-            png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png") 
-            fig1.savefig(png_file)  # Padded with zeros: frame_0001.png, etc.
-            #plt.close() 
-       
-    
+        print("yesss")
+        for frame in range(self.max_frames):
+            self.plot_substrate(frame, force_plot=True)
+            png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
+            self.fig.savefig(png_file)
+            plt.close(self.fig)
+        
    
 
     #---------------------------------------------------------------------------
