@@ -1236,7 +1236,7 @@ class SubstrateTab(object):
 
     def save_png(self):
         print("yesss")
-        for frame in range(self.max_frames):
+        for frame in range(self.max_frames.value):
             self.plot_substrate(frame, force_plot=True)
             png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
             self.fig.savefig(png_file)
