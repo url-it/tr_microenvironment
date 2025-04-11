@@ -112,7 +112,7 @@ class SubstrateTab(object):
         max_frames = 1   
         # self.mcds_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
         # self.i_plot = interactive(self.plot_plots, frame=(0, max_frames), continuous_update=False)  
-        self.i_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=True)  
+        self.i_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
 
         # "plot_size" controls the size of the tab height, not the plot (rf. figsize for that)
         # NOTE: the Substrates Plot tab has an extra row of widgets at the top of it (cf. Cell Plots tab)
@@ -628,6 +628,7 @@ class SubstrateTab(object):
                 self.max_frames.value = int(last_file[-12:-4])
 
     def download_local_svg_cb(self,s):
+        self.save_png()
         file_str = os.path.join(self.output_dir, '*.svg')
         # print('zip up all ',file_str)
         with zipfile.ZipFile('svg.zip', 'w') as myzip:
@@ -651,7 +652,7 @@ class SubstrateTab(object):
             files.download('mcds.zip')
 
     def download_svg_cb(self):
-        self.save_png()
+    
         file_str = os.path.join(self.output_dir, '*.svg')
         # print('zip up all ',file_str)
         with zipfile.ZipFile('svg.zip', 'w') as myzip:
