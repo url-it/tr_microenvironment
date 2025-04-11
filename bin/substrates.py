@@ -651,6 +651,7 @@ class SubstrateTab(object):
             files.download('mcds.zip')
 
     def download_svg_cb(self):
+        self.save_png
         file_str = os.path.join(self.output_dir, '*.svg')
         # print('zip up all ',file_str)
         with zipfile.ZipFile('svg.zip', 'w') as myzip:
