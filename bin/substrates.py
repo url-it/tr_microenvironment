@@ -1243,7 +1243,7 @@ class SubstrateTab(object):
             png_file = os.path.join(self.output_dir, f"frame{self.png_frame:04d}.png")
             self.fig.savefig(png_file)
             plt.close(self.fig)
-        png_frame=0
+        self.png_frame=0
    
 
     #---------------------------------------------------------------------------
