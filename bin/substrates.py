@@ -112,7 +112,7 @@ class SubstrateTab(object):
         max_frames = 1   
         # self.mcds_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
         # self.i_plot = interactive(self.plot_plots, frame=(0, max_frames), continuous_update=False)  
-        self.i_plot = interactive(self.plot_substrate, frame=(0, max_frames), continuous_update=False)  
+        self.i_plot = interactive(lambda frame: self.plot_substrate(frame), frame=(0, max_frames), continuous_update=False)  
 
         # "plot_size" controls the size of the tab height, not the plot (rf. figsize for that)
         # NOTE: the Substrates Plot tab has an extra row of widgets at the top of it (cf. Cell Plots tab)
