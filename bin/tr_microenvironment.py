@@ -357,6 +357,7 @@ def run_button_cb(s):
     in some separate window, kind of like a terminal window to do
     so we use the output widget, and make as a "button/tab/dropdown" GUI
     """
+
     with output_widget:
         output_widget.clear_output()  # Clear previous output
         print("Running myproj ...")
@@ -385,7 +386,8 @@ def run_button_cb(s):
         sub.update(tdir)
 
         run_button.description = "WAIT..."
-        process = subprocess.Popen(["../bin/myproj", "config.xml"],
+        path = "/content/tr_microenvironment/bin/myproj"
+        process = subprocess.Popen([path, "config.xml"],
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE,
                                    universal_newlines=True)
