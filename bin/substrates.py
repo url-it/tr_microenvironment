@@ -649,7 +649,7 @@ class SubstrateTab(object):
         self.save_png()
         file_str = os.path.join(self.output_dir, '*.png')
         # print('zip up all ',file_str)
-        with zipfile.ZipFile('svg.zip', 'w') as myzip:
+        with zipfile.ZipFile('png.zip', 'w') as myzip:
             for f in glob.glob(file_str):
                 myzip.write(f, os.path.basename(f))   # 2nd arg avoids full filename path in the archive
 
